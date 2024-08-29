@@ -25,21 +25,5 @@ def create_todo():
     return new_todo, 201
 
 
-@app.put("/todo")
-def update_todo():
-    update_item_encoded = jsonable_encoder('id')
-    items[item_id] = update_item_encoded
-    return update_item_encoded
-
-
-@app.delete("/todo")
-def delete_todo():
-    request_data = request.get_json()
-    todo_id = request_data.get("id")
-
-    global todolist
-    todolist = [item for item in todolist if item["id"] != todo_id]
-
-    return {"message": f"Todo item with id {todo_id} deleted"}, 200
 
 
